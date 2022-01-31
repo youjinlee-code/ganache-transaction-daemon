@@ -1,0 +1,24 @@
+{
+  "name": "ganache-transaction-daemon",
+  "version": "1.0.0",
+  "description": "가나슈에서 발생하는 모든 입출금을 DB에 기록하는 데몬 만들기",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nittre/ganache-transaction-daemon.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nittre/ganache-transaction-daemon/issues"
+  },
+  "homepage": "https://github.com/nittre/ganache-transaction-daemon#readme",
+  "dependencies": {
+    "express": "^4.17.2",
+    "web3": "^1.7.0"
+  }
+}
