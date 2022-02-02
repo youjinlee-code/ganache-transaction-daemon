@@ -5,8 +5,11 @@ const transaction = require("./routes/transaction");
 const Web3 = require("web3");
 const PORT = 3000;
 const GANACHE_SERVER = "http://localhost:7545";
+
 const web3 = new Web3(new Web3.providers.HttpProvider(GANACHE_SERVER));
 global.web3 = web3;
+
+app.use(express.json());
 
 app.use("/account", account);
 app.use("/transaction", transaction);
