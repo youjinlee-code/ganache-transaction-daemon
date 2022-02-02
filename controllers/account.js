@@ -15,7 +15,23 @@ module.exports = {
             },
         });
     },
-    faucet: (req, res, next) => {
-        //...
+    faucet: async (req, res, next) => {
+        const { address } = req.body;
+
+        const tx = {
+            from: ganacheAccounts[0],
+            to: address,
+            value: web3.utils.toWei("5", "ether"),
+        };
+
+        web3.eth.sendTransaction(tx).on("receipt", (receipt) => {
+            res.status(200).send({
+                message: "faucet success.",
+                data: {
+                    receipt,
+                },
+            });
+            return;
+        });
     },
 };
