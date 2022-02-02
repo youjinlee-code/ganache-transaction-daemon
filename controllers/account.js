@@ -4,14 +4,12 @@ module.exports = {
     },
     newAccount: async (req, res, next) => {
         const password = req.body.password;
-        const newAcc = await web3.eth.accounts.create(password);
-        const { address, privateKey } = newAcc;
-        // DB 저장
+        const newAccAddr = await web3.eth.personal.newAccount(password);
 
         res.status(201).send({
             message: "account created.",
             data: {
-                address,
+                address: newAccAddr,
             },
         });
     },
