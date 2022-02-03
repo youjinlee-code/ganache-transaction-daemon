@@ -1,3 +1,5 @@
+const user = require("../models/user");
+
 module.exports = {
     getUserInfo: (req, res, next) => {
         //...
@@ -5,6 +7,12 @@ module.exports = {
     newAccount: async (req, res, next) => {
         const password = req.body.password;
         const newAccAddr = await web3.eth.personal.newAccount(password);
+
+        await user.create({
+            address: newAccAddr,
+            password,
+            balance: "0",
+        });
 
         res.status(201).send({
             message: "account created.",

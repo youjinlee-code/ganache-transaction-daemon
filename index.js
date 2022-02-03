@@ -3,7 +3,6 @@ const app = express();
 const account = require("./routes/account");
 const transaction = require("./routes/transaction");
 const Web3 = require("web3");
-const { newTransaction } = require("./controllers/transaction");
 const PORT = 3000;
 const GANACHE_SERVER = "http://localhost:7545";
 
