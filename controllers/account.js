@@ -1,8 +1,27 @@
 const { User } = require("../models");
 
 module.exports = {
-    getUserInfo: (req, res, next) => {
-        //...
+    getUserInfo: async (req, res, next) => {
+        console.log(req.query);
+        let user = await User.findAll({
+            attributes: ["address", "balance"],
+            where: { address: "0x998dEBBCaa6bd3de3A4A2D4526432C0933771e03" },
+        });
+        let { address, balance } = user[0].dataValues;
+
+        if (user) {
+            res.status(200).send({
+                message: "user information",
+                data: {
+                    address,
+                    balance,
+                },
+            });
+        } else {
+            res.status(404).send({
+                message: "cannot find user",
+            });
+        }
     },
     newAccount: async (req, res, next) => {
         const password = req.body.password;
