@@ -1,4 +1,4 @@
-const user = require("../models/user");
+const { User } = require("../models");
 
 module.exports = {
     getUserInfo: (req, res, next) => {
@@ -8,7 +8,7 @@ module.exports = {
         const password = req.body.password;
         const newAccAddr = await web3.eth.personal.newAccount(password);
 
-        await user.create({
+        await User.create({
             address: newAccAddr,
             password,
             balance: "0",
